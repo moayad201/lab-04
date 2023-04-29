@@ -4,38 +4,38 @@ package sa.edu.kau.fcit.cpit252.lab4BuilderFactory;
 
 public final class Avatar {
 
-  private final SkinTone tone;
+  private final SkinTone skinTone;
   private final HairType hairType;
   private final HairColor hairColor;
   private final BodyType bodyType;
   private final FacialFeatures facialFeatures;
 
-  public Avatar(SkinTone tone, HairType hairType, HairColor hairColor, BodyType bodyType, FacialFeatures facialFeatures) {
-    this.tone = tone;
+  public Avatar(SkinTone skinTone, HairType hairType, HairColor hairColor, BodyType bodyType, FacialFeatures facialFeatures) {
+    this.skinTone = skinTone;
     this.hairType = hairType;
     this.hairColor = hairColor;
     this.bodyType = bodyType;
     this.facialFeatures = facialFeatures;
   }
 
-  public Avatar(SkinTone tone, HairType hairType) {
-    this(tone, hairType, HairColor.BLACK, BodyType.FIT, FacialFeatures.CLEAN_SHAVEN);
+  public Avatar(SkinTone skinTone, HairType hairType) {
+    this(skinTone, hairType, HairColor.BLACK, BodyType.FIT, FacialFeatures.CLEAN_SHAVEN);
   }
 
-  public Avatar(SkinTone tone, HairType hairType, HairColor hairColor) {
-    this(tone, hairType, hairColor, BodyType.FIT, FacialFeatures.CLEAN_SHAVEN);
+  public Avatar(SkinTone skinTone, HairType hairType, HairColor hairColor) {
+    this(skinTone, hairType, hairColor, BodyType.FIT, FacialFeatures.CLEAN_SHAVEN);
   }
 
-  public Avatar(SkinTone tone, HairType hairType, HairColor hairColor, BodyType bodyType) {
-    this(tone, hairType, hairColor, bodyType, FacialFeatures.CLEAN_SHAVEN);
+  public Avatar(SkinTone skinTone, HairType hairType, HairColor hairColor, BodyType bodyType) {
+    this(skinTone, hairType, hairColor, bodyType, FacialFeatures.CLEAN_SHAVEN);
   }
 
-  public Avatar(SkinTone tone,  BodyType bodyType) {
-    this(tone, HairType.SHORT, HairColor.BLACK, bodyType, FacialFeatures.CLEAN_SHAVEN);
+  public Avatar(SkinTone skinTone,  BodyType bodyType) {
+    this(skinTone, HairType.SHORT, HairColor.BLACK, bodyType, FacialFeatures.CLEAN_SHAVEN);
   }
 
   public SkinTone getSkinTone() {
-    return tone;
+    return skinTone;
   }
 
   public HairType getHairType() {
@@ -58,7 +58,7 @@ public final class Avatar {
   public String toString() {
 
     var sb = new StringBuilder();
-    sb.append(tone).append(" skin color");
+    sb.append(skinTone).append(" skin color");
     if (hairColor != null || hairType != null) {
       sb.append(" with ");
       if (hairColor != null) {
