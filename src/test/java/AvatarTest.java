@@ -2,14 +2,14 @@
 
 
 
-import com.mycompany.factorybuilder.Avatar;
-import com.mycompany.factorybuilder.BodyType;
-import com.mycompany.factorybuilder.CharacterFactory;
-import com.mycompany.factorybuilder.CharacterTypes;
-import com.mycompany.factorybuilder.FacialFeatures;
-import com.mycompany.factorybuilder.HairColor;
-import com.mycompany.factorybuilder.HairType;
-import com.mycompany.factorybuilder.SkinTone;
+import sa.edu.kau.fcit.cpit252.lab4BuilderFactory.Avatar;
+import sa.edu.kau.fcit.cpit252.lab4BuilderFactory.BodyType;
+import sa.edu.kau.fcit.cpit252.lab4BuilderFactory.CharacterFactory;
+import sa.edu.kau.fcit.cpit252.lab4BuilderFactory.CharacterTypes;
+import sa.edu.kau.fcit.cpit252.lab4BuilderFactory.FacialFeatures;
+import sa.edu.kau.fcit.cpit252.lab4BuilderFactory.HairColor;
+import sa.edu.kau.fcit.cpit252.lab4BuilderFactory.HairType;
+import sa.edu.kau.fcit.cpit252.lab4BuilderFactory.SkinTone;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
