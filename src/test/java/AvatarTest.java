@@ -2,14 +2,8 @@
 
 
 
-import sa.edu.kau.fcit.cpit252.lab4BuilderFactory.Avatar;
-import sa.edu.kau.fcit.cpit252.lab4BuilderFactory.BodyType;
-import sa.edu.kau.fcit.cpit252.lab4BuilderFactory.CharacterFactory;
-import sa.edu.kau.fcit.cpit252.lab4BuilderFactory.CharacterTypes;
-import sa.edu.kau.fcit.cpit252.lab4BuilderFactory.FacialFeatures;
-import sa.edu.kau.fcit.cpit252.lab4BuilderFactory.HairColor;
-import sa.edu.kau.fcit.cpit252.lab4BuilderFactory.HairType;
-import sa.edu.kau.fcit.cpit252.lab4BuilderFactory.SkinTone;
+import sa.edu.kau.fcit.cpit252.lab4BuilderFactory.*;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -20,14 +14,13 @@ class AvatarTest {
 
 
   @Test
-  void testMissingName() {
-    assertThrows(IllegalArgumentException.class, () -> CharacterFactory.createCharacter(CharacterTypes.ARCHER, null));
-  }
-
-
-  @Test
   void testMissingSkin() {
     assertThrows(IllegalArgumentException.class, () -> new Avatar.Builder(null));
+  }
+
+  @Test
+  void testMissingName() {
+    assertThrows(IllegalArgumentException.class, () -> CharacterFactory.createCharacter(CharacterTypes.ARCHER, null));
   }
 
   @Test
