@@ -57,7 +57,7 @@ public final class Avatar {
   @Override
   public String toString() {
 
-    var sb = new StringBuilder();
+    StringBuilder sb = new StringBuilder();
     sb.append(skinTone).append(" skin color");
     if (hairColor != null || hairType != null) {
       sb.append(" with ");
