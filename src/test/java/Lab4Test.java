@@ -88,7 +88,7 @@ public class Lab4Test {
     // Test build an avatar using method chaining
     @Test
     public void testBuildAnAvatar() {
-        final var avatar = new Avatar.Builder(SkinTone.FAIR)
+        final Avatar avatar = new Avatar.Builder(SkinTone.FAIR)
                 .withBodyType(BodyType.FIT)
                 .withFacialFeatures(FacialFeatures.CLEAN_SHAVEN)
                 .withHairType(HairType.LONG_CURLY)
