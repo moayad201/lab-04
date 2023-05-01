@@ -25,7 +25,7 @@ public class AvatarTest {
 
   @Test
   void testBuildHero() {
-    final var hero = new Avatar.Builder(SkinTone.FAIR)
+    Avatar var hero = new Avatar.Builder(SkinTone.FAIR)
         .withBodyType(BodyType.FIT)
         .withFacialFeatures(FacialFeatures.CLEAN_SHAVEN)
         .withHairType(HairType.LONG_CURLY)
