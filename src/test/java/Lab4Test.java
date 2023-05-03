@@ -5,59 +5,40 @@ import org.junit.jupiter.api.Test;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.lang.reflect.Parameter;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class Lab4Test {
 
+    /*
+     * Test the Builder Design Pattern
+     */
 
-    // We should not have access to the constructor as it should be private
-    @Test
-    public void ShouldBePrivateConstructor() {
-        for (Constructor c : Avatar.class.getConstructors()) {
-            assertTrue(Modifier.isPrivate(c.getModifiers()));
-        }
-    }
-
-    // Avatar should have one constructor with one parameter of Avatar.Builder type
-    @Test
-    public void constructorShouldTakeBuilderParameter() {
-        assertEquals(1, Avatar.class.getDeclaredConstructors().length);
-        assertEquals(1, Avatar.class.getDeclaredConstructors()[0].getParameterCount());
-        assertEquals(Avatar.Builder.class, Avatar.class.getDeclaredConstructors()[0].getParameters()[0].getType());
-    }
-
-    // The Avatar class should have a private constructor with Builder parameter type
+    // Avatar constructor: should have one private constructor with one parameter of Avatar.Builder type
+    // TODO: replace getDeclaredConstructors() as it seems to be unpredictable when working with nested classes
     @Test
     public void assertCorrectConstructorParameter() {
         boolean passed = false;
+        assertEquals(0, Avatar.class.getConstructors().length);
         for (Constructor c : Avatar.class.getDeclaredConstructors()) {
-            assertEquals(1, c.getParameterCount());
-            if (c.getParameterTypes()[0] == Avatar.Builder.class) {
+            if (c.getParameterCount() == 1 && c.getParameterTypes()[0] == Avatar.Builder.class && Modifier.isPrivate(c.getModifiers())) {
                 passed = true;
             }
         }
         assertTrue(passed);
     }
 
-    // Should have an inner public static class called Builder
+    // Avatar class should have a nested public static class called Builder
     @Test
     public void assertAvatarHasInnerClass() {
         assertEquals(1, Avatar.class.getDeclaredClasses().length);
         assertTrue(Modifier.isPublic(Avatar.class.getDeclaredClasses()[0].getModifiers()));
         assertTrue(Modifier.isStatic(Avatar.class.getDeclaredClasses()[0].getModifiers()));
+        assertEquals(Avatar.class.getDeclaredClasses()[0].getName(), Avatar.Builder.class.getName());
     }
 
-    // Should have a Builder class with setter methods
-    @Test
-    public void assertBuilderClassConstructor() {
-        assertEquals(1, Avatar.Builder.class.getDeclaredConstructors().length);
-        assertEquals(1, Avatar.Builder.class.getDeclaredConstructors()[0].getParameterCount());
-        assertEquals(SkinTone.class, Avatar.Builder.class.getDeclaredConstructors()[0].getParameters()[0].getType());
-    }
-
-    // Should have a Builder class with setter methods that all return the Builder class type
+    // Avatar.Builder class should have a set of setter methods whose name start with "with",
+    // takes one parameter, and returns Avatar.Builder class type
     @Test
     public void assertBuilderSetterMethods() {
         boolean passed = false;
@@ -71,12 +52,12 @@ public class Lab4Test {
         assertTrue(passed);
     }
 
-    // Should have a Builder class with a build method that returns the Avatar class type
+    //  Avatar.Builder class should have a Builder class with a build method called build that returns the Avatar class type and takes no parameters
     @Test
     public void assertBuilderBuildMethod() {
         boolean passed = false;
         for (Method method : Avatar.Builder.class.getDeclaredMethods()) {
-            if (method.getParameterCount() == 0 && method.getName().startsWith("build")) {
+            if (method.getParameterCount() == 0 && method.getName().equalsIgnoreCase("build")) {
                 assertEquals(0, method.getParameters().length);
                 assertEquals(method.getReturnType().getTypeName(), Avatar.class.getName());
                 passed = true;
@@ -85,7 +66,7 @@ public class Lab4Test {
         assertTrue(passed);
     }
 
-    // Test build an avatar using method chaining
+    // Should build an avatar using method chaining
     @Test
     public void testBuildAnAvatar() {
         final Avatar avatar = new Avatar.Builder(SkinTone.FAIR)
@@ -105,7 +86,7 @@ public class Lab4Test {
 
 
     /*
-     * Test Factory Method
+     * Test the Factory Method Design Pattern
      */
 
 
@@ -132,10 +113,10 @@ public class Lab4Test {
         assertNotNull(CharacterFactory.createCharacter(CharacterTypes.ARCHER, "coolArcher").getAvatar());
     }
 
-    // Factory method should not allow creating an avatar without a name
+    // Factory method should not create an avatar without a name and should throw an IllegalArgumentException
     @Test
     public void shouldNotCreateAnAvatarWithNoName() {
         assertThrows(IllegalArgumentException.class, () -> CharacterFactory.createCharacter(CharacterTypes.ARCHER, null));
     }
-    
+
 }
