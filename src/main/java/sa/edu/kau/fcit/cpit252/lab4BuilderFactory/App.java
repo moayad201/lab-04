@@ -8,7 +8,7 @@ public class App {
 
     Archer archer = new Archer("Legolas");
     System.out.println(archer.toString());
-    
+
     FlagBearer flagBearer = new FlagBearer("Frodo");
     System.out.println(flagBearer.toString());
   }
